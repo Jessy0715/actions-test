@@ -27,8 +27,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        env:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Settings > Secret 建立的 ACCESS_TOKEN
-          BRANCH: gh-pages # deploy 到 gh-pages 這個分支
-          FOLDER: dist # build 後的資料夾
-          BUILD_SCRIPT: npm install && npm run build # 執行指令
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
